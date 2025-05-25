@@ -1,27 +1,30 @@
-
 body {
   margin: 30px;
   font-family: Arial, sans-serif;
 }
 
 header {
-  background-color: #f1f;
- font-style:italic;
- font-size:25px;
+  background-color: #f1f1f1;
+  font-style: italic;
+  font-size: 25px;
   padding: 10px;
-  border:10px;
-  margin:20px
-  
+  border: 10px solid black;
+  margin: 20px;
 }
 
 nav ul {
-  color:greenyellow;
   list-style: none;
-  margin: 10;
-  padding: 10;
-  display: inline-flex;
-  justify-content: flex-start; /* Use 'center' or 'flex-end' if needed */
+  margin: 10px;
+  padding: 10px;
+  display: flex; /* Use flex, not inline-flex here */
+  justify-content: flex-start; /* change to center or flex-end if needed */
   gap: 30px;
+  background-color: #f0f0f0; /* Optional: better visibility */
+}
+
+nav ul li {
+  margin: 0;
+  padding: 0;
 }
 
 nav ul li a {
@@ -34,14 +37,21 @@ nav ul li a:hover {
   color: #007bff;
 }
 
-
-h1{color:blue;
-padding-top:20px;
-margin-left:20px;}
-p{font-size:20px;}
-h2{color:blue;
-margin-left:20px;
-
+h1 {
+  color: blue;
+  padding-top: 20px;
+  margin-left: 20px;
 }
-h3{color:orange;
+
+p {
+  font-size: 20px;
+}
+
+h2 {
+  color: blue;
+  margin-left: 20px;
+}
+
+h3 {
+  color: orange;
 }
