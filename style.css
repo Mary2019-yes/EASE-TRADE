@@ -1,13 +1,13 @@
 
 body {
-  font-family: Arial, sans-serif;
   margin: 30px;
-  padding: 20px;
+  font-family: Arial, sans-serif;
 }
+
 header {
   background-color: #f1f;
  font-style:italic;
- font-size:24px;
+ font-size:25px;
   padding: 10px;
   border:10px;
   margin:20px
@@ -37,9 +37,11 @@ nav ul li a:hover {
 
 h1{color:blue;
 padding-top:20px;
-}
+margin-left:20px;}
 p{font-size:20px;}
 h2{color:blue;
+margin-left:20px;
+
 }
 h3{color:orange;
 }
