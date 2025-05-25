@@ -1,12 +1,12 @@
 
-.wrapper {
-  margin-left: 50px;
-}
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+  body {
+  margin: 20px;
+  padding: 20px;
 }
+
 
 header {
   background-color: #f1f;
