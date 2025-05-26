@@ -69,8 +69,8 @@ input{width: 50%;
   font-size: 16px;}
 
 textarea {
-  width: 20%;     
-  height: 40px;     
+  width: 50%;     
+  height: 100px;     
   padding: 10px;
   box-sizing: border-box;
   font-size: 16px;
