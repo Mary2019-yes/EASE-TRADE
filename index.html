@@ -5,16 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Simplifyd Biz - Secure Escrow Service</title>
   <link rel="stylesheet" href="style.css" />
-  
-  <!-- AOS CSS for animations -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-  
-  <style>
-    /* Smooth scroll */
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
 </head>
 <body>
 
@@ -31,51 +21,16 @@
   </header>
 
   <!-- Home Section -->
-  <section id="home" data-aos="fade-up" style="background: linear-gradient(to right, #007bff, #00c4ff); color: white; text-align: center; padding: 60px 20px;">
+  <section id="home" data-aos="fade-up">
     <h1>Welcome to Simplifyd Biz</h1>
     <p>Protecting your online transactions with secure escrow services.</p>
-    <a href="#get-started" class="cta-button" style="background:#fff;color:#007bff;padding:12px 24px;border-radius:8px;text-decoration:none;font-weight:bold;">Get Started</a>
-  </section>
-
-  <!-- How It Works Section -->
-  <section id="how-it-works" data-aos="fade-right" style="padding: 40px 20px;">
-    <h2>How It Works</h2>
-    <p>We provide a simple and secure escrow service for online transactions.</p>
-    <div class="steps">
-      <div class="step">
-        <h3>Step 1: Agreement</h3>
-        <p>Both parties agree to the terms of the transaction.</p>
-      </div>
-      <div class="step">
-        <h3>Step 2: Deposit</h3>
-        <p>The buyer deposits funds with Simplifyd Biz.</p>
-      </div>
-      <div class="step">
-        <h3>Step 3: Fulfillment</h3>
-        <p>The seller delivers the product or service to the buyer.</p>
-      </div>
-      <div class="step">
-        <h3>Step 4: Release</h3>
-        <p>Once the buyer confirms, funds are released to the seller.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" data-aos="fade-left" style="padding: 40px 20px;">
-    <h2>Services</h2>
-    <ul>
-      <li>Secure escrow payments</li>
-      <li>Business purchase protection</li>
-      <li>Trusted customer support</li>
-    </ul>
   </section>
 
   <!-- About Us Section with Read More -->
-  <section id="about" data-aos="fade-left" style="padding: 40px 20px;">
+  <section id="about" data-aos="fade-left">
     <h2>About Simplifyd Biz</h2>
     <p>We are a trusted platform that helps businesses protect their money and products during online transactions.</p>
-    <button id="readMoreBtn" style="padding:8px 16px; font-size:16px; margin-top:10px; cursor:pointer;">Read More</button>
+    <button id="readMoreBtn">Read More</button>
     <div id="moreAbout" style="display: none; margin-top: 15px;">
       <p>Our mission is to make online business safe and stress-free! We provide reliable escrow services that ensure both buyers and sellers are protected.</p>
       <p>With Simplifyd Biz, you can transact with confidence and peace of mind.</p>
@@ -83,16 +38,16 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" data-aos="zoom-in" style="padding: 40px 20px;">
+  <section id="contact" data-aos="zoom-in">
     <h2>Contact Us</h2>
     <form>
       <label for="name">Name:</label><br />
-      <input type="text" id="name" name="name" required style="width: 50%; padding: 10px; font-size: 16px;" /><br /><br />
+      <input type="text" id="name" name="name" required /><br /><br />
       <label for="email">Email:</label><br />
-      <input type="email" id="email" name="email" required style="width: 50%; padding: 10px; font-size: 16px;" /><br /><br />
+      <input type="email" id="email" name="email" required /><br /><br />
       <label for="message">Message:</label><br />
-      <textarea id="message" name="message" rows="4" required style="width: 50%; padding: 10px; font-size: 16px;"></textarea><br /><br />
-      <button type="submit" style="padding: 12px 24px; font-size: 16px; cursor: pointer;">Submit</button>
+      <textarea id="message" name="message" rows="4" required></textarea><br /><br />
+      <button type="submit">Submit</button>
     </form>
   </section>
 
@@ -101,15 +56,9 @@
     Thank you! Your message has been sent successfully.
   </div>
 
-  <footer style="text-align:center; padding: 20px; background:#f1f1f1; margin-top:40px;">
+  <footer>
     <p>&copy; 2025 Simplifyd Biz. All rights reserved.</p>
   </footer>
-
-  <!-- AOS JS -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
 
   <script src="script.js"></script>
 </body>
