@@ -1,15 +1,19 @@
-  document.getElementById("readMoreBtn").addEventListener("click", function () {
-  const more = document.getElementById("moreAbout");
-  more.style.display = more.style.display === "none" ? "block" : "none";
-});
+document.addEventListener("DOMContentLoaded", function () {
+  // Toggle Read More
+  const readMoreBtn = document.getElementById("readMoreBtn");
+  const moreAbout = document.getElementById("moreAbout");
 
-  // Inject mobile responsive meta tag
-  document.head.insertAdjacentHTML(
-    "beforeend",
-    '<meta name="viewport" content="width=device-width, initial-scale=1">'
-  );
+  readMoreBtn.addEventListener("click", () => {
+    if (moreAbout.style.display === "none" || moreAbout.style.display === "") {
+      moreAbout.style.display = "block";
+      readMoreBtn.textContent = "Read Less";
+    } else {
+      moreAbout.style.display = "none";
+      readMoreBtn.textContent = "Read More";
+    }
+  });
 
-  // Success message on form submission
+  // Form submit success popup
   const form = document.querySelector("form");
   const successMessage = document.getElementById("successMessage");
 
@@ -17,26 +21,10 @@
     e.preventDefault();
     successMessage.style.display = "block";
 
-    // Hide it after 3 seconds
     setTimeout(() => {
       successMessage.style.display = "none";
     }, 3000);
 
     form.reset();
   });
-
-  // Optional: Dark mode toggle (if you’ve added one)
-  const darkModeToggle = document.getElementById("darkModeToggle");
-  if (darkModeToggle) {
-    darkModeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
-      if (document.body.classList.contains("dark-mode")) {
-        document.body.style.backgroundColor = "#121212";
-        document.body.style.color = "#ddd";
-      } else {
-        document.body.style.backgroundColor = "#f8f9fa";
-        document.body.style.color = "#333";
-      }
-    });
-  }
 });
