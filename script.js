@@ -1,19 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Responsive meta tag
+  // Inject mobile responsive meta tag
   document.head.insertAdjacentHTML(
     "beforeend",
     '<meta name="viewport" content="width=device-width, initial-scale=1">'
   );
 
-  // Form submit alert
+  // Success message on form submission
   const form = document.querySelector("form");
+  const successMessage = document.getElementById("successMessage");
+
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    alert("Thank you! Your message has been sent successfully.");
+    successMessage.style.display = "block";
+
+    // Hide it after 3 seconds
+    setTimeout(() => {
+      successMessage.style.display = "none";
+    }, 3000);
+
     form.reset();
   });
 
-  // Dark mode toggle
+  // Optional: Dark mode toggle (if you’ve added one)
   const darkModeToggle = document.getElementById("darkModeToggle");
   if (darkModeToggle) {
     darkModeToggle.addEventListener("click", () => {
