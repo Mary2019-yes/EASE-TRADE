@@ -1,4 +1,8 @@
-document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("readMoreBtn").addEventListener("click", function () {
+  const more = document.getElementById("moreAbout");
+  more.style.display = more.style.display === "none" ? "block" : "none";
+});
+
   // Inject mobile responsive meta tag
   document.head.insertAdjacentHTML(
     "beforeend",
