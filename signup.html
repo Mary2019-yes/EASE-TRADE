@@ -1,17 +1,50 @@
-<form action="https://formsubmit.io/send/your-marykibui16@gmail.com" method="POST" class="signup-form">
-  <h2>Create an Account on Simplifyd Biz</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign Up - Simplifyd Biz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="get-started.html">Get Started</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <label for="email">Please enter your email address</label>
-  <input type="email" id="email" name="email" required />
+  <section class="section-padding">
+    <h1>Create an Account on Simplifyd Biz</h1>
+    <form action="https://formsubmit.io/send/marykibui16@gmail.com" method="POST" class="signup-form">
+      <label for="email">Please enter your email address *</label>
+      <input type="email" id="email" name="email" required />
 
-  <label for="password">Please enter your password</label>
-  <input type="password" id="password" name="password" required />
+      <label for="password">Please enter your password *</label>
+      <input type="password" id="password" name="password" required />
 
-  <!-- optional hidden spam protection -->
-  <input name="_formsubmit_id" type="text" style="display:none">
+      <ul style="font-size: 0.9rem; color: #555;">
+        <li>At least 7 characters</li>
+        <li>At least one UPPER and one lower case character</li>
+        <li>At least one number or special character</li>
+      </ul>
 
-  <!-- redirect after submit -->
-  <input type="hidden" name="_redirect" value="https://mary2019-yes.github.io/EASE-TRADE/thank-you.html">
+      <!-- Spam protection -->
+      <input name="_formsubmit_id" type="text" style="display:none">
 
-  <button type="submit">Sign Up</button>
-</form>
+      <!-- Redirect after submit -->
+      <input type="hidden" name="_redirect" value="https://mary2019-yes.github.io/EASE-TRADE/thank-you.html">
+
+      <button type="submit">Sign Up</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Simplifyd Biz. All rights reserved.</p>
+  </footer>
+</body>
+</html>
