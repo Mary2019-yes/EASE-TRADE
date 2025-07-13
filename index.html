@@ -1,144 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Simplifyd Biz - Secure Escrow Service</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- AOS Animation Library -->
-<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- AOS CSS for animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
-
 <body>
-  <div class="wrapper">
 
-    <header>
-      <nav>
-        <ul class="menu">
-          <li><a href="#home">Home</a></li> 
-          <li><a href="#how-it-works">How It Works</a></li> 
-          <li><a href="#services">Services</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#why-trust-us">Why Trust Us</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-        </ul>
-      </nav>
-    </header>
+  <header>
+    <nav>
+      <ul class="menu">
+        <li><a href="#home">Home</a></li> 
+        <li><a href="#how-it-works">How It Works</a></li> 
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <!-- Home Section -->
-    <section id="home" data-aos="slide-up">
-      <h1>Welcome to Simplifyd Biz</h1>
-      <p>Protecting your online transactions with secure escrow services.</p>
-      <a href="#get-started" class="cta-button">Get Started</a>
-    </section>
+  <section id="home" data-aos="fade-up" class="home-section">
+    <h1>Welcome to Simplifyd Biz</h1>
+    <p>Protecting your online transactions with secure escrow services.</p>
+    <a href="#get-started" class="cta-button">Get Started</a>
+  </section>
 
-    <!-- Description Section -->
-    <section>
-      <h1>We provide reliable and transparent escrow solutions for online transactions and business purchases.</h1>
-      <p>Our experienced team ensures a hassle-free process, safeguarding both buyers and sellers with fair rates and outstanding support.</p>
-    </section>
-
-    <!-- How It Works Section -->
-    <section id="How It Works" data-aos="zoom-in">
-
-      <h2>How It Works</h2>
-      <p>We provide a simple and secure escrow service for online transactions.</p>
-      <div class="steps">
-        <div class="step">
-          <h3>Step 1: Agreement</h3>
-          <p>Both parties agree to the terms of the transaction.</p>
-        </div>
-        <div class="step">
-          <h3>Step 2: Deposit</h3>
-          <p>The buyer deposits funds with Simplifyd Biz.</p>
-        </div>
-        <div class="step">
-          <h3>Step 3: Fulfillment</h3>
-          <p>The seller delivers the product or service to the buyer.</p>
-        </div>
-        <div class="step">
-          <h3>Step 4: Release</h3>
-          <p>Once the buyer confirms, funds are released to the seller.</p>
-        </div>
+  <section id="how-it-works" data-aos="fade-right" class="section-padding">
+    <h2>How It Works</h2>
+    <p>We provide a simple and secure escrow service for online transactions.</p>
+    <div class="steps">
+      <div class="step">
+        <h3>Step 1: Agreement</h3>
+        <p>Both parties agree to the terms of the transaction.</p>
       </div>
-    </section>
+      <div class="step">
+        <h3>Step 2: Deposit</h3>
+        <p>The buyer deposits funds with Simplifyd Biz.</p>
+      </div>
+      <div class="step">
+        <h3>Step 3: Fulfillment</h3>
+        <p>The seller delivers the product or service to the buyer.</p>
+      </div>
+      <div class="step">
+        <h3>Step 4: Release</h3>
+        <p>Once the buyer confirms, funds are released to the seller.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- About Section -->
-    <li><a href="#about">About Us</a></li>
-<section data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-  <h1>Meet Secure Escrow</h1>
-  <p>At SecureEscrow, we are dedicated to providing reliable and transparent escrow services...</p>
-</section>
+  <section id="services" data-aos="fade-left" class="section-padding">
+    <h2>Services</h2>
+    <ul>
+      <li>Secure escrow payments</li>
+      <li>Business purchase protection</li>
+      <li>Trusted customer support</li>
+    </ul>
+  </section>
 
+  <section id="about" data-aos="fade-left" class="section-padding">
+    <h2>About Simplifyd Biz</h2>
+    <p>We are a trusted platform that helps businesses protect their money and products during online transactions.</p>
+    <button id="readMoreBtn">Read More</button>
+    <div id="moreAbout" class="hidden-content">
+      <p>Our mission is to make online business safe and stress-free! We provide reliable escrow services that ensure both buyers and sellers are protected.</p>
+      <p>With Simplifyd Biz, you can transact with confidence and peace of mind.</p>
+    </div>
+  </section>
 
-    <!-- Why Trust Us Section -->
-    <section id="why-trust-us">
-      <h2>Why Trust Us</h2>
-      <ul>
-        <li>Secure Transactions</li>
-        <li>Trusted Service</li>
-        <li>Fast and Reliable</li>
-      </ul>
-    </section>
+  <section id="contact" data-aos="zoom-in" class="section-padding">
+    <h2>Contact Us</h2>
+    <form>
+      <label for="name">Name:</label><br />
+      <input type="text" id="name" name="name" required /><br /><br />
+      <label for="email">Email:</label><br />
+      <input type="email" id="email" name="email" required /><br /><br />
+      <label for="message">Message:</label><br />
+      <textarea id="message" name="message" rows="4" required></textarea><br /><br />
+      <button type="submit">Submit</button>
+    </form>
+  </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing">
-      <h2>Pricing</h2>
-      <p>Affordable fees for your peace of mind.</p>
-      <ul>
-        <li>Standard Transaction: KES 500</li>
-        <li>Premium Transaction: KES 1,000</li>
-      </ul>
-    </section>
+  <div id="successMessage" class="success-popup">Thank you! Your message has been sent successfully.</div>
 
-    <!-- Get Started Section -->
-    <section id="get-started">
-      <h2>Get Started</h2>
-      <a href="signup.html" class="cta-button">Sign Up Now</a>
-    </section>
+  <footer>
+    <p>&copy; 2025 Simplifyd Biz. All rights reserved.</p>
+  </footer>
 
-    <!-- About Simplifyd Biz -->
-    <section id="about">
-  <h2>About Simplifyd Biz</h2>
-  <p>We are a trusted platform...</p>
-  <button id="readMoreBtn">Read More</button>
-  <div id="moreAbout" style="display: none;">
-    <p>We help secure payments between buyers and sellers, especially for high-value transactions...</p>
-  </div>
-</section>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 
-
-    <!-- Contact Section -->
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <p>Have questions? Reach out to us.</p>
-      <form>
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" rows="4" required></textarea><br><br>
-        <button type="submit">Submit</button>
-      </form>
-    </section>
-
-    <footer>
-      <p>&copy; 2025 Simplifyd Biz. All rights reserved.</p>
-    </footer>
-
-  </div>
-
-  <!-- ✅ JavaScript file linked here -->
   <script src="script.js"></script>
-  <div id="successMessage" style="display: none;" class="success-popup">
-  Thank you! Your message has been sent successfully.
-</div>
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
-
 </body>
 </html>
