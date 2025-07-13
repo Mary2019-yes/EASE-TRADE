@@ -1,3 +1,8 @@
+// Inject mobile responsive meta tag
+document.head.insertAdjacentHTML(
+  "beforeend",
+  '<meta name="viewport" content="width=device-width, initial-scale=1">'
+);
 document.addEventListener("DOMContentLoaded", function () {
   // Body
   document.body.style.backgroundColor = "#ffe4e1";
