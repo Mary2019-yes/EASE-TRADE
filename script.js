@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   document.body.style.backgroundColor = "#ffe4e1";
   document.body.style.margin = "30px";
   document.body.style.fontFamily = "Arial, sans-serif";
+  console.log("Body styled by JS");
 
   // Header
   const header = document.querySelector("header");
@@ -13,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     header.style.padding = "10px";
     header.style.border = "10px solid black";
     header.style.margin = "20px";
+    console.log("Header styled by JS");
   }
 
   // Navigation
@@ -25,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     navUl.style.justifyContent = "flex-start";
     navUl.style.gap = "30px";
     navUl.style.backgroundColor = "#f0f0f0";
+    console.log("Navigation styled by JS");
   }
 
   document.querySelectorAll("nav ul li a").forEach(link => {
@@ -38,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
       link.style.color = "#333";
     });
   });
+  console.log("Navigation links styled by JS");
 
   // Headings
   document.querySelectorAll("h1").forEach(h1 => {
@@ -45,22 +49,26 @@ document.addEventListener("DOMContentLoaded", function () {
     h1.style.paddingTop = "20px";
     h1.style.marginLeft = "20px";
   });
+  console.log("H1 headings styled by JS");
 
   document.querySelectorAll("h2").forEach(h2 => {
     h2.style.color = "blue";
     h2.style.marginLeft = "20px";
   });
+  console.log("H2 headings styled by JS");
 
   document.querySelectorAll("h3").forEach(h3 => {
     h3.style.color = "orange";
   });
+  console.log("H3 headings styled by JS");
 
   // Paragraphs
   document.querySelectorAll("p").forEach(p => {
     p.style.fontSize = "20px";
   });
+  console.log("Paragraphs styled by JS");
 
-  // Form styling
+  // Form
   const form = document.querySelector("form");
   if (form) {
     form.style.color = "purple";
@@ -69,15 +77,19 @@ document.addEventListener("DOMContentLoaded", function () {
     form.style.fontFamily = "Arial";
     form.style.boxSizing = "border-box";
     form.style.width = "90%";
+    console.log("Form styled by JS");
   }
 
+  // Inputs
   document.querySelectorAll("input").forEach(input => {
     input.style.width = "50%";
     input.style.padding = "10px";
     input.style.boxSizing = "border-box";
     input.style.fontSize = "16px";
   });
+  console.log("Input fields styled by JS");
 
+  // Textarea
   const textarea = document.querySelector("textarea");
   if (textarea) {
     textarea.style.width = "40%";
@@ -95,5 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
     footer.style.textAlign = "center";
     footer.style.fontSize = "16px";
     footer.style.color = "#444";
+    console.log("Footer styled by JS");
   }
 });
