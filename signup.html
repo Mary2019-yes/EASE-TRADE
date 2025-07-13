@@ -1,103 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sign Up - Simplifyd Biz</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .signup-form {
-      max-width: 500px;
-      margin: 40px auto;
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
+<form action="https://formsubmit.io/send/your-email@example.com" method="POST" class="signup-form">
+  <h2>Create an Account on Simplifyd Biz</h2>
 
-    .signup-form h2 {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #800080;
-    }
+  <label for="email">Please enter your email address</label>
+  <input type="email" id="email" name="email" required />
 
-    .signup-form label {
-      display: block;
-      font-weight: 600;
-      margin-top: 15px;
-      color: #333;
-    }
+  <label for="password">Please enter your password</label>
+  <input type="password" id="password" name="password" required />
 
-    .signup-form input[type="email"],
-    .signup-form input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      margin-top: 8px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
+  <!-- optional hidden spam protection -->
+  <input name="_formsubmit_id" type="text" style="display:none">
 
-    .password-hint {
-      font-size: 0.9rem;
-      color: #666;
-      margin-top: 5px;
-    }
+  <!-- redirect after submit -->
+  <input type="hidden" name="_redirect" value="https://mary2019-yes.github.io/EASE-TRADE/thank-you.html">
 
-    .signup-form button {
-      margin-top: 25px;
-      width: 100%;
-      padding: 14px;
-      font-size: 1.1rem;
-      background-color: #800080;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-
-    .signup-form button:hover {
-      background-color: #ff1493;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html#home">Home</a></li>
-        <li><a href="get-started.html">Get Started</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <form class="signup-form">
-    <h2>Create an Account on Simplifyd Biz</h2>
-
-    <label for="email">Please enter your email address</label>
-    <input type="email" id="email" name="email" placeholder="you@example.com" required />
-
-    <label for="password">Please enter your password</label>
-    <input type="password" id="password" name="password" placeholder="********" required />
-
-    <div class="password-hint">
-      <p>Strong passwords have:</p>
-      <ul>
-        <li>At least 7 characters</li>
-        <li>At least one UPPER case and one lower case letter</li>
-        <li>At least one number or special character</li>
-      </ul>
-    </div>
-
-    <button type="submit">Sign Up</button>
-  </form>
-
-  <footer>
-    <p>&copy; 2025 Simplifyd Biz. All rights reserved.</p>
-  </footer>
-
-</body>
-</html>
+  <button type="submit">Sign Up</button>
+</form>
