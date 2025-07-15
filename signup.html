@@ -1,38 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sign Up - Simplifyd Biz</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header>
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="get-started.html">Get Started</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<!-- Firebase JS SDKs for the browser -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
-  <section class="section-padding">
-    <h1>Create an Account on Simplifyd Biz</h1>
-    <form action="https://formspree.io/f/mgvzeenj" method="POST" class="signup-form">
-      <label for="email">Please enter your email address *</label>
-      <input type="email" id="email" name="email" required />
+  const firebaseConfig = {
+    apiKey: "AIzaSyAieRdXGsYRowlrCP-f20iylTb_KHK77yQ",
+    authDomain: "simplifyd-biz.firebaseapp.com",
+    projectId: "simplifyd-biz",
+    storageBucket: "simplifyd-biz.appspot.com",
+    messagingSenderId: "681167510393",
+    appId: "1:681167510393:web:6a97787187ee27e879eda8",
+    measurementId: "G-V2046MG1R6"
+  };
 
-      <!-- Redirect to thank you page after submission -->
-      <input type="hidden" name="_redirect" value="https://mary2019-yes.github.io/EASE-TRADE/thank-you.html" />
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-      <button type="submit">Sign Up</button>
-    </form>
-  </section>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("#signup-form");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = form.email.value;
+      const password = form.password.value;
 
-  <footer>
-    <p>&copy; 2025 Simplifyd Biz. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          alert("Signup successful!");
+          window.location.href = "thank-you.html";
+        })
+        .catch((error) => {
+          alert("Signup failed: " + error.message);
+        });
+    });
+  });
+</script>
