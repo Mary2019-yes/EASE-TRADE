@@ -21,7 +21,7 @@ header {
 /* Navigation */
 nav {
   background: #003f5c;
-  padding: 1.5rem 0; /* increased top and bottom padding */
+  padding: 1.5rem 0;
   display: flex;
   justify-content: center;
 }
@@ -29,7 +29,7 @@ nav {
 .menu {
   list-style: none;
   display: flex;
-  gap: 25px; /* increased spacing between links */
+  gap: 25px;
   padding: 0;
   margin: 0;
 }
@@ -42,7 +42,7 @@ nav {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  padding: 10px 15px; /* added padding inside links */
+  padding: 10px 15px;
   display: inline-block;
 }
 
@@ -104,15 +104,23 @@ nav {
   padding: 1rem;
   border-radius: 8px;
 }
-/* How It Works Image */
-.how-image {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
-  display: block;
-  margin: 2rem auto;
+
+/* How It Works Background Like Home Section */
+.how-section {
+  background-image: url('https://media.istockphoto.com/id/2200903157/photo/happy-couple-buys-a-house.webp?s=1024x1024&w=is&k=20&c=OhIHCVHEXKsBm8lAXReLOHXOUwNBYWYMnmxbwjSW3GA=');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: white;
+  text-align: center;
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.how-section .overlay {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 2rem;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Services Section */
@@ -189,3 +197,4 @@ footer {
   background-color: #003f5c;
   color: white;
 }
+
