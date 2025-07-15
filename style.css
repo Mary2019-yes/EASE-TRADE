@@ -15,21 +15,31 @@ body {
 header {
   background-color: #005792;
   color: #fff;
-  padding: 1rem 0;
   text-align: center;
 }
 
 /* Navigation */
 nav {
   background: #003f5c;
+  padding: 0.5rem 0;
   display: flex;
   justify-content: center;
-  padding: 0.5rem 0;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  display: inline;
 }
 
 nav a {
   color: white;
-  margin: 0 15px;
   text-decoration: none;
   font-weight: bold;
 }
@@ -73,7 +83,7 @@ nav a:hover {
   background-color: #e63b5f;
 }
 
-/* Section Padding for Other Sections */
+/* Generic Section Padding */
 .section-padding {
   padding: 4rem 2rem;
 }
@@ -94,10 +104,6 @@ nav a:hover {
 }
 
 /* Services Section */
-.services {
-  background: #fff;
-}
-
 .services ul {
   list-style: disc;
   padding-left: 2rem;
@@ -151,6 +157,19 @@ button[type="submit"]:hover {
   background-color: #003f5c;
 }
 
+/* Success Message Popup */
+.success-popup {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #28a745;
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
 /* Footer */
 footer {
   text-align: center;
@@ -158,4 +177,3 @@ footer {
   background-color: #003f5c;
   color: white;
 }
-
