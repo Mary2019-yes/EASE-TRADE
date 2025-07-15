@@ -1,4 +1,4 @@
-/* General Reset */
+/* Global Reset */
 * {
   margin: 0;
   padding: 0;
@@ -6,38 +6,40 @@
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff0f5;
+  color: #4a4a4a;
   line-height: 1.6;
-  background-color: #f7f9fb;
-  color: #333;
   padding-bottom: 50px;
 }
 
 /* Navigation */
 header {
-  background-color: #1d72b8;
+  background-color: #ffb6c1;
   padding: 20px 0;
   text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .menu {
   list-style: none;
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 25px;
 }
 
 .menu li a {
   color: #fff;
   text-decoration: none;
   font-weight: bold;
+  font-size: 16px;
 }
 
 .menu li a:hover {
   text-decoration: underline;
 }
 
-/* Sections */
+/* Section Padding */
 .section-padding {
   padding: 60px 20px;
   max-width: 1000px;
@@ -45,104 +47,120 @@ header {
   text-align: center;
 }
 
+/* Home Section */
 .home-section {
-  background: #e8f1fa;
-  padding: 80px 20px;
+  background: #ffe4e1;
+  padding: 100px 20px;
   text-align: center;
+  color: #333;
 }
 
 h1, h2, h3 {
+  color: #d6336c;
   margin-bottom: 20px;
-  color: #1d72b8;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
 /* CTA Button */
 .cta-button {
   display: inline-block;
   padding: 12px 30px;
-  background-color: #1d72b8;
+  background-color: #ff69b4;
   color: #fff;
-  text-decoration: none;
+  border: none;
   border-radius: 25px;
+  text-decoration: none;
   font-weight: bold;
   transition: background 0.3s ease;
 }
 
 .cta-button:hover {
-  background-color: #155a96;
+  background-color: #ff1493;
 }
 
-/* Steps */
+/* Steps Section */
 .steps {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
   margin-top: 30px;
 }
 
 .step {
-  background-color: #fff;
+  background: #fff;
+  padding: 25px;
   border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s;
 }
 
-/* Read More */
+.step:hover {
+  transform: translateY(-5px);
+}
+
+/* About Section */
 .hidden-content {
   display: none;
   margin-top: 20px;
 }
 
 #readMoreBtn {
-  margin-top: 20px;
+  margin-top: 15px;
   padding: 10px 20px;
-  background-color: #1d72b8;
+  background-color: #ff69b4;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
 }
 
 #readMoreBtn:hover {
-  background-color: #155a96;
+  background-color: #ff1493;
 }
 
 /* Contact Form */
 form {
+  background: #fff;
   max-width: 500px;
   margin: 0 auto;
-  text-align: left;
-  background: #fff;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  text-align: left;
 }
 
 form label {
-  font-weight: bold;
+  font-weight: 600;
+  color: #444;
 }
 
 form input,
 form textarea {
   width: 100%;
-  padding: 10px;
+  padding: 12px;
   margin-top: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 14px;
 }
 
 form button {
-  background-color: #1d72b8;
+  background-color: #ff69b4;
   color: white;
   padding: 10px 25px;
   border: none;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-size: 15px;
   cursor: pointer;
 }
 
 form button:hover {
-  background-color: #155a96;
+  background-color: #ff1493;
 }
 
 /* Success Popup */
@@ -153,7 +171,7 @@ form button:hover {
   padding: 15px;
   margin: 30px auto 0;
   max-width: 500px;
-  border-radius: 5px;
+  border-radius: 6px;
   display: none;
   text-align: center;
 }
@@ -162,7 +180,7 @@ form button:hover {
 footer {
   text-align: center;
   padding: 20px;
-  background-color: #1d72b8;
+  background-color: #ffb6c1;
   color: #fff;
   position: relative;
   bottom: 0;
