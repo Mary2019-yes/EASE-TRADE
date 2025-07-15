@@ -21,7 +21,7 @@ header {
 /* Navigation */
 nav {
   background: #003f5c;
-  padding: 0.5rem 0;
+  padding: 1.5rem 0; /* increased top and bottom padding */
   display: flex;
   justify-content: center;
 }
@@ -29,7 +29,7 @@ nav {
 .menu {
   list-style: none;
   display: flex;
-  gap: 20px;
+  gap: 25px; /* increased spacing between links */
   padding: 0;
   margin: 0;
 }
@@ -38,13 +38,15 @@ nav {
   display: inline;
 }
 
-nav a {
+.menu li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  padding: 10px 15px; /* added padding inside links */
+  display: inline-block;
 }
 
-nav a:hover {
+.menu li a:hover {
   text-decoration: underline;
 }
 
