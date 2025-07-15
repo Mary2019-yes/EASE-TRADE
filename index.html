@@ -5,9 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Simplifyd Biz - Secure Escrow Service</title>
   <link rel="stylesheet" href="style.css" />
-  
-  <!-- AOS CSS for animations -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+  <!-- ✅ Load Firebase logic -->
+  <script type="module" src="firebase.js"></script>
 </head>
 <body>
 
@@ -26,29 +27,17 @@
   <section id="home" data-aos="fade-up" class="home-section">
     <h1>Welcome to Simplifyd Biz</h1>
     <p>Protecting your online transactions with secure escrow services.</p>
-   <a href="get-started.html" class="cta-button">Get Started</a>
+    <a href="get-started.html" class="cta-button">Get Started</a>
   </section>
 
   <section id="how-it-works" data-aos="fade-right" class="section-padding">
     <h2>How It Works</h2>
     <p>We provide a simple and secure escrow service for online transactions.</p>
     <div class="steps">
-      <div class="step">
-        <h3>Step 1: Agreement</h3>
-        <p>Both parties agree to the terms of the transaction.</p>
-      </div>
-      <div class="step">
-        <h3>Step 2: Deposit</h3>
-        <p>The buyer deposits funds with Simplifyd Biz.</p>
-      </div>
-      <div class="step">
-        <h3>Step 3: Fulfillment</h3>
-        <p>The seller delivers the product or service to the buyer.</p>
-      </div>
-      <div class="step">
-        <h3>Step 4: Release</h3>
-        <p>Once the buyer confirms, funds are released to the seller.</p>
-      </div>
+      <div class="step"><h3>Step 1: Agreement</h3><p>Both parties agree to the terms of the transaction.</p></div>
+      <div class="step"><h3>Step 2: Deposit</h3><p>The buyer deposits funds with Simplifyd Biz.</p></div>
+      <div class="step"><h3>Step 3: Fulfillment</h3><p>The seller delivers the product or service to the buyer.</p></div>
+      <div class="step"><h3>Step 4: Release</h3><p>Once the buyer confirms, funds are released to the seller.</p></div>
     </div>
   </section>
 
@@ -73,7 +62,7 @@
 
   <section id="contact" data-aos="zoom-in" class="section-padding">
     <h2>Contact Us</h2>
-    <form>
+    <form id="contactForm">
       <label for="name">Name:</label><br />
       <input type="text" id="name" name="name" required /><br /><br />
       <label for="email">Email:</label><br />
@@ -84,7 +73,7 @@
     </form>
   </section>
 
-  <div id="successMessage" class="success-popup">Thank you! Your message has been sent successfully.</div>
+  <div id="successMessage" class="success-popup" style="display:none;">Thank you! Your message has been sent successfully.</div>
 
   <footer>
     <p>&copy; 2025 Simplifyd Biz. All rights reserved.</p>
@@ -95,6 +84,5 @@
     AOS.init();
   </script>
 
-  <script src="script.js"></script>
 </body>
 </html>
