@@ -104,6 +104,16 @@ nav {
   padding: 1rem;
   border-radius: 8px;
 }
+/* How It Works Image */
+.how-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin: 2rem auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
 /* Services Section */
 .services ul {
