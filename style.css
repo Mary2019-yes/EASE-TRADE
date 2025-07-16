@@ -263,6 +263,7 @@ nav {
   animation: floatFlowers 30s linear infinite;
   z-index: 0;
 }
+
 @keyframes floatFlowers {
   from {
     transform: translateY(0);
