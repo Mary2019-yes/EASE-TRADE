@@ -198,15 +198,17 @@ nav {
   text-align: center;
   color: #005792;
   margin-bottom: 1.5rem;
+  font-size: 2rem;
 }
 
 .about-container p {
   line-height: 1.7;
   margin-bottom: 1.5rem;
+  font-size: 1rem;
 }
 
 .about-points {
-  list-style-type: none;
+  list-style: none;
   padding-left: 0;
   margin-bottom: 1.5rem;
 }
