@@ -179,26 +179,59 @@ nav {
   color: #555;
 }
 
-/* About Section */
-.hidden-content {
-  display: none;
-  margin-top: 1rem;
-  color: #222;
+.about-section {
+  background-color: #ffffff;
+  padding: 4rem 2rem;
 }
 
-button#readMoreBtn {
-  margin-top: 1rem;
-  background-color: #005792;
-  color: white;
-  padding: 0.5rem 1rem;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.3s;
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  color: #333;
 }
 
-button#readMoreBtn:hover {
-  background-color: #003f5c;
+.about-container h2 {
+  text-align: center;
+  color: #005792;
+  margin-bottom: 1.5rem;
+}
+
+.about-container p {
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.about-points {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 1.5rem;
+}
+
+.about-points li {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.about-points li::before {
+  content: "✔️";
+  position: absolute;
+  left: 0;
+  color: #005792;
+}
+
+.about-conclusion {
+  font-style: italic;
+  font-weight: 500;
+  color: #333;
+  background-color: #fff7f8;
+  padding: 1rem;
+  border-left: 4px solid #ff4d6d;
+  border-radius: 8px;
 }
 
 /* Contact Section */
