@@ -235,6 +235,34 @@ nav {
   border-left: 4px solid #ff4d6d;
   border-radius: 8px;
 }
+.testimonial-cards {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.testimonial-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  max-width: 350px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.testimonial-cards {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.testimonial-card {
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  max-width: 350px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
 
 /* Contact Section */
 .contact-container {
