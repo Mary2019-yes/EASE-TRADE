@@ -243,21 +243,38 @@ nav {
   border-left: 4px solid #ff4d6d;
   border-radius: 8px;
 }
-.testimonial-cards {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
+#testimonials {
+  position: relative;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  padding: 4rem 2rem;
 }
 
-.testimonial-card {
-  background-color: #ffffff;
-  padding: 1.5rem;
-  border-radius: 10px;
-  max-width: 350px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+#testimonials::before {
+  content: "";
+  background-image: url('https://cdn.pixabay.com/photo/2016/03/31/20/11/flowers-1290833_1280.png');
+  background-size: cover;
+  opacity: 0.1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150%;
+  height: 150%;
+  animation: floatFlowers 30s linear infinite;
+  z-index: 0;
 }
+@keyframes floatFlowers {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
+
 .testimonial-cards {
+  position: relative;
+  z-index: 1;
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
