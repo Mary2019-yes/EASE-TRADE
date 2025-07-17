@@ -219,25 +219,26 @@
       faders.forEach(fader => appearOnScroll.observe(fader));
     });
   </script>
-  <!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js"></script>
+<!-- Firebase SDKs for plain HTML -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js"></script>
 
-<!-- Firebase Config -->
 <script>
   const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyAieRdXGsYRowlrCP-f20iylTb_KHK77yQ",
+    authDomain: "simplifyd-biz.firebaseapp.com",
+    projectId: "simplifyd-biz",
+    storageBucket: "simplifyd-biz.firebasestorage.app",
+    messagingSenderId: "681167510393",
+    appId: "1:681167510393:web:6a97787187ee27e879eda8",
+    measurementId: "G-V2046MG1R6"
   };
 
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
   const db = firebase.firestore();
 </script>
+
 
 <!-- Form Handling Script -->
 <script>
