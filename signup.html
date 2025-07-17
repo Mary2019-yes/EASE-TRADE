@@ -42,10 +42,10 @@
     <p>&copy; 2025 Simplifyd Biz. All rights reserved.</p>
   </footer>
 
-  <!-- Firebase Signup Logic -->
+  <!-- Firebase Signup with Email Verification -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyAieRdXGsYRowlrCP-f20iylTb_KHK77yQ",
@@ -69,15 +69,17 @@
         const password = form.password.value;
 
         createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    const user = userCredential.user;
-    user.sendEmailVerification()
-      .then(() => {
-        alert("Signup successful! Please check your email for verification.");
-        window.location.href = "thank-you.html";
-      });
-  })
-
+          .then((userCredential) => {
+            const user = userCredential.user;
+            sendEmailVerification(user)
+              .then(() => {
+                alert("Signup successful! A verification email has been sent. Please check your inbox.");
+                window.location.href = "thank-you.html";
+              })
+              .catch((error) => {
+                alert("Failed to send verification email: " + error.message);
+              });
+          })
           .catch((error) => {
             alert("Signup failed: " + error.message);
           });
