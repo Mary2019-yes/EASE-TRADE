@@ -69,10 +69,15 @@
         const password = form.password.value;
 
         createUserWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            alert("Signup successful!");
-            window.location.href = "thank-you.html"; // make sure this page exists
-          })
+  .then((userCredential) => {
+    const user = userCredential.user;
+    user.sendEmailVerification()
+      .then(() => {
+        alert("Signup successful! Please check your email for verification.");
+        window.location.href = "thank-you.html";
+      });
+  })
+
           .catch((error) => {
             alert("Signup failed: " + error.message);
           });
