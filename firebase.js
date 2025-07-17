@@ -1,51 +1,21 @@
-// Import Firebase
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// Firebase Config
+// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAieRdXGsYRowlrCP-f20iylTb_KHK77yQ",
-  authDomain: "simplifyd-biz.firebaseapp.com",
-  projectId: "simplifyd-biz",
-  storageBucket: "simplifyd-biz.appspot.com",
-  messagingSenderId: "681167510393",
-  appId: "1:681167510393:web:6a97787187ee27e879eda8",
-  measurementId: "G-V2046MG1R6"
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT_ID.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const auth = getAuth(app);
 const db = getFirestore(app);
 
-// Form Submission
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("contactForm");
-  const successMessage = document.getElementById("successMessage");
-
-  if (form) {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const name = form.name.value;
-      const email = form.email.value;
-      const message = form.message.value;
-
-      try {
-        await addDoc(collection(db, "contacts"), {
-          name,
-          email,
-          message,
-          timestamp: new Date()
-        });
-
-        form.reset();
-        successMessage.style.display = "block";
-      } catch (error) {
-        console.error("Firestore error:", error);
-        alert("Failed to send. Please try again.");
-      }
-    });
-  }
-});
+export { auth, db };
