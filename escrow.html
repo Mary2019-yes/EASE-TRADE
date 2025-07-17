@@ -2,54 +2,76 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Escrow Request - Simplifyd Biz</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Escrow Request Form</title>
 </head>
 <body>
+  <h2>Escrow Request Form</h2>
+  <form id="escrowForm">
+    <label>Full Name:</label><br>
+    <input type="text" id="name" required /><br><br>
 
-  <header>
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="dashboard.html">Dashboard</a></li>
-        <li><a href="escrow.html">New Escrow</a></li>
-        <li><a href="login.html">Login</a></li>
-      </ul>
-    </nav>
-  </header>
+    <label>Email:</label><br>
+    <input type="email" id="email" required /><br><br>
 
-  <section class="section-padding">
-    <h1>New Escrow Request</h1>
-    <form action="https://formspree.io/f/mgvzeenj" method="POST" class="signup-form">
-      <label for="buyer">Buyer Name *</label>
-      <input type="text" id="buyer" name="buyer" required />
+    <label>Phone Number:</label><br>
+    <input type="text" id="phone" required /><br><br>
 
-      <label for="seller">Seller Name *</label>
-      <input type="text" id="seller" name="seller" required />
+    <label>Item Description:</label><br>
+    <textarea id="description" required></textarea><br><br>
 
-      <label for="item">Item or Service Description *</label>
-      <textarea id="item" name="item" rows="3" required></textarea>
+    <button type="submit">Submit</button>
+  </form>
 
-      <label for="amount">Transaction Amount (KES) *</label>
-      <input type="number" id="amount" name="amount" required />
+  <p id="successMsg" style="color: green;"></p>
 
-      <label for="deadline">Completion Deadline *</label>
-      <input type="date" id="deadline" name="deadline" required />
+  <!-- Firebase SDK -->
+  <script type="module">
+    // Firebase SDKs
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-      <!-- Hidden spam protection field -->
-      <input name="_formsubmit_id" type="text" style="display:none" />
+    const firebaseConfig = {
+      apiKey: "AIzaSyAieRdXGsYRowlrCP-f20iylTb_KHK77yQ",
+      authDomain: "simplifyd-biz.firebaseapp.com",
+      projectId: "simplifyd-biz",
+      storageBucket: "simplifyd-biz.firebasestorage.app",
+      messagingSenderId: "681167510393",
+      appId: "1:681167510393:web:6a97787187ee27e879eda8",
+      measurementId: "G-V2046MG1R6"
+    };
 
-      <!-- Redirect to thank-you page -->
-      <input type="hidden" name="_redirect" value="https://mary2019-yes.github.io/EASE-TRADE/thank-you.html" />
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-      <button type="submit">Submit Escrow Request</button>
-    </form>
-  </section>
+    // Form submission
+    const form = document.getElementById("escrowForm");
+    const successMsg = document.getElementById("successMsg");
 
-  <footer>
-    <p>&copy; 2025 Simplifyd Biz. All rights reserved.</p>
-  </footer>
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
 
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const phone = document.getElementById("phone").value;
+      const description = document.getElementById("description").value;
+
+      try {
+        await addDoc(collection(db, "escrowRequests"), {
+          name,
+          email,
+          phone,
+          description,
+          createdAt: new Date()
+        });
+
+        successMsg.textContent = "Form submitted successfully!";
+        form.reset();
+      } catch (error) {
+        console.error("Error adding document: ", error);
+        successMsg.textContent = "Something went wrong!";
+      }
+    });
+  </script>
 </body>
 </html>
