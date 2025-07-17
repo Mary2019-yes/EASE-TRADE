@@ -1,4 +1,21 @@
-document.addEventListener("DOMContentLoaded", function () {
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+
+document.addEventListener("DOMContentLoaded", async function () {
+  // Firebase config (replace with your actual values)
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
   // Toggle Read More
   const readMoreBtn = document.getElementById("readMoreBtn");
   const moreAbout = document.getElementById("moreAbout");
@@ -27,7 +44,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     try {
-      await firebase.firestore().collection("escrowRequests").add(data);
+      await addDoc(collection(db, "escrowRequests"), data);
       successMessage.style.display = "block";
       setTimeout(() => {
         successMessage.style.display = "none";
@@ -35,7 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
       form.reset();
     } catch (error) {
       alert("Error submitting form.");
-      console.error(error);
+      console.error("Submission error:", error);
     }
   });
 });
+
