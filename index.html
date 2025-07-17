@@ -269,6 +269,38 @@
     });
   });
 </script>
+<script>
+  // Listen for form submission
+  document.getElementById("escrowForm").addEventListener("submit", async function (e) {
+    e.preventDefault(); // Prevent the page from refreshing
+
+    // Get form values
+    const fullName = document.getElementById("fullName").value;
+    const email = document.getElementById("email").value;
+    const phone = document.getElementById("phone").value;
+    const product = document.getElementById("product").value;
+    const seller = document.getElementById("seller").value;
+    const price = document.getElementById("price").value;
+
+    try {
+      await db.collection("escrowSubmissions").add({
+        fullName,
+        email,
+        phone,
+        product,
+        seller,
+        price,
+        timestamp: new Date()
+      });
+
+      alert("Form submitted successfully!");
+      document.getElementById("escrowForm").reset();
+    } catch (error) {
+      console.error("Error adding document: ", error);
+      alert("There was an error submitting the form.");
+    }
+  });
+</script>
 
 </body>
 </html>
