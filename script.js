@@ -13,18 +13,29 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Form submit success popup
+  // Form submit
   const form = document.querySelector("form");
   const successMessage = document.getElementById("successMessage");
 
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
-    successMessage.style.display = "block";
 
-    setTimeout(() => {
-      successMessage.style.display = "none";
-    }, 3000);
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
 
-    form.reset();
+    try {
+      await firebase.firestore().collection("escrowRequests").add(data);
+      successMessage.style.display = "block";
+      setTimeout(() => {
+        successMessage.style.display = "none";
+      }, 3000);
+      form.reset();
+    } catch (error) {
+      alert("Error submitting form.");
+      console.error(error);
+    }
   });
 });
