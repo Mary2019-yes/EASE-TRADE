@@ -1,41 +1,62 @@
+<!-- start-transaction.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Buyer & Seller Form - Simplifyd Biz</title>
-  <link rel="stylesheet" href="style.css" />
-  <script type="module" src="firebase.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Start Transaction - Simplifyd Biz</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+<body>
+  <section class="form-section">
+    <h2>Start New Transaction</h2>
+    <form id="transactionForm">
+      <label for="clientName">Client Name</label>
+      <input type="text" id="clientName" name="clientName" required>
 
-  <section id="buyer-seller-form">
-  <h2>Buyer & Seller Form</h2>
-  <form id="buyerSellerForm">
-    <label for="userType">I am a:</label>
-    <select id="userType" name="userType" required>
-      <option value="">-- Select --</option>
-      <option value="buyer">Buyer</option>
-      <option value="seller">Seller</option>
-    </select>
+      <label for="clientEmail">Client Email</label>
+      <input type="email" id="clientEmail" name="clientEmail" required>
 
-    <label for="fullName">Full Name:</label>
-    <input type="text" id="fullName" name="fullName" required>
+      <label for="transactionAmount">Amount (KES)</label>
+      <input type="number" id="transactionAmount" name="transactionAmount" required>
 
-    <label for="email">Email Address:</label>
-    <input type="email" id="email" name="email" required>
+      <label for="transactionDetails">Transaction Details</label>
+      <textarea id="transactionDetails" name="transactionDetails" required></textarea>
 
-    <label for="phone">Phone Number:</label>
-    <input type="tel" id="phone" name="phone" required>
+      <button type="submit">Submit</button>
+    </form>
+    <p id="successMessage" style="display: none; color: green;">Transaction submitted successfully!</p>
+  </section>
 
-    <label for="product">Product or Service:</label>
-    <input type="text" id="product" name="product" required>
+  <script type="module" src="firebase.js"></script>
+  <script>
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { db } from './firebase.js';
 
-    <label for="details">More Details:</label>
-    <textarea id="details" name="details" rows="4" placeholder="Tell us what you’re buying or selling..." required></textarea>
+    const form = document.getElementById('transactionForm');
+    const successMsg = document.getElementById('successMessage');
 
-    <button type="submit">Submit</button>
-  </form>
-</section>
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const clientName = form.clientName.value;
+      const clientEmail = form.clientEmail.value;
+      const transactionAmount = parseFloat(form.transactionAmount.value);
+      const transactionDetails = form.transactionDetails.value;
 
+      try {
+        await addDoc(collection(db, "transactions"), {
+          clientName,
+          clientEmail,
+          transactionAmount,
+          transactionDetails,
+          timestamp: new Date()
+        });
+        successMsg.style.display = 'block';
+        form.reset();
+      } catch (err) {
+        alert("Error submitting transaction: " + err);
+      }
+    });
+  </script>
 </body>
 </html>
