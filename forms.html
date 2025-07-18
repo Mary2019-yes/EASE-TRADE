@@ -1,65 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Start Transaction - Simplifyd Biz</title>
-  <link rel="stylesheet" href="style.css" />
-  <script type="module" src="firebase.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Buyer & Seller Forms</title>
+  <link rel="stylesheet" href="buyer_seller_forms.css">
 </head>
 <body>
-  <div class="container">
-    <h1>Simplifyd Biz Escrow</h1>
-    <h2>Start a New Transaction</h2>
-    
-    <form id="transactionForm">
-      <div class="form-group">
-        <label for="transactionId">Transaction ID</label>
-        <input type="text" id="transactionId" required />
-      </div>
-      <div class="form-group">
-        <label for="buyerEmail">Buyer Email</label>
-        <input type="email" id="buyerEmail" required />
-      </div>
-      <div class="form-group">
-        <label for="sellerEmail">Seller Email</label>
-        <input type="email" id="sellerEmail" required />
-      </div>
-      <div class="form-group">
-        <label for="amount">Amount (KES)</label>
-        <input type="number" id="amount" required />
-      </div>
-      <div class="form-group">
-        <label for="itemDesc">Item Description</label>
-        <textarea id="itemDesc" rows="3" required></textarea>
-      </div>
-      <button type="submit" class="btn">Submit Transaction</button>
-    </form>
-    
-    <p id="statusMsg" class="status-message"></p>
+
+  <div class="form-wrapper">
+    <!-- Buyer Form -->
+    <div class="form-section">
+      <h2>Buyer Form</h2>
+      <form id="buyerForm">
+        <div class="input-group">
+          <label for="buyerName">Full Name</label>
+          <input type="text" id="buyerName" name="buyerName" required>
+        </div>
+        <div class="input-group">
+          <label for="buyerEmail">Email</label>
+          <input type="email" id="buyerEmail" name="buyerEmail" required>
+        </div>
+        <div class="input-group">
+          <label for="buyerItem">Item Interested In</label>
+          <input type="text" id="buyerItem" name="buyerItem" required>
+        </div>
+        <div class="input-group">
+          <label for="buyerNotes">Additional Notes</label>
+          <textarea id="buyerNotes" name="buyerNotes" rows="4"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit Buyer Info</button>
+      </form>
+    </div>
+
+    <!-- Seller Form -->
+    <div class="form-section">
+      <h2>Seller Form</h2>
+      <form id="sellerForm">
+        <div class="input-group">
+          <label for="sellerName">Full Name</label>
+          <input type="text" id="sellerName" name="sellerName" required>
+        </div>
+        <div class="input-group">
+          <label for="sellerEmail">Email</label>
+          <input type="email" id="sellerEmail" name="sellerEmail" required>
+        </div>
+        <div class="input-group">
+          <label for="sellerItem">Item for Sale</label>
+          <input type="text" id="sellerItem" name="sellerItem" required>
+        </div>
+        <div class="input-group">
+          <label for="sellerPrice">Proposed Price</label>
+          <input type="number" id="sellerPrice" name="sellerPrice" required>
+        </div>
+        <div class="input-group">
+          <label for="sellerNotes">Additional Notes</label>
+          <textarea id="sellerNotes" name="sellerNotes" rows="4"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Submit Seller Info</button>
+      </form>
+    </div>
   </div>
 
-  <script>
-    const transactionForm = document.getElementById('transactionForm');
-    const statusMsg = document.getElementById('statusMsg');
+  <!-- Firebase SDK -->
+  <script type="module">
+    // Import Firebase functions
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-    transactionForm.addEventListener('submit', async (e) => {
+    // Your Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyAieRdXGsYRowlrCP-f20iylTb_KHK77yQ",
+      authDomain: "simplifyd-biz.firebaseapp.com",
+      projectId: "simplifyd-biz",
+      storageBucket: "simplifyd-biz.firebasestorage.app",
+      messagingSenderId: "681167510393",
+      appId: "1:681167510393:web:6a97787187ee27e879eda8",
+      measurementId: "G-V2046MG1R6"
+    };
+
+    // Initialize Firebase and Firestore
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Handle Buyer Form Submission
+    document.getElementById("buyerForm").addEventListener("submit", async (e) => {
       e.preventDefault();
-
-      const transactionId = document.getElementById('transactionId').value;
-      const buyerEmail = document.getElementById('buyerEmail').value;
-      const sellerEmail = document.getElementById('sellerEmail').value;
-      const amount = parseFloat(document.getElementById('amount').value);
-      const itemDesc = document.getElementById('itemDesc').value;
-
       try {
-        await addTransaction(transactionId, buyerEmail, sellerEmail, amount, itemDesc);
-        statusMsg.textContent = 'Transaction submitted successfully!';
-        statusMsg.style.color = 'green';
-        transactionForm.reset();
+        await addDoc(collection(db, "buyers"), {
+          name: document.getElementById("buyerName").value,
+          email: document.getElementById("buyerEmail").value,
+          item: document.getElementById("buyerItem").value,
+          notes: document.getElementById("buyerNotes").value
+        });
+        alert("Buyer info submitted!");
+        e.target.reset();
       } catch (error) {
-        statusMsg.textContent = 'Error: ' + error.message;
-        statusMsg.style.color = 'red';
+        alert("Error submitting buyer info: " + error);
+      }
+    });
+
+    // Handle Seller Form Submission
+    document.getElementById("sellerForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      try {
+        await addDoc(collection(db, "sellers"), {
+          name: document.getElementById("sellerName").value,
+          email: document.getElementById("sellerEmail").value,
+          item: document.getElementById("sellerItem").value,
+          price: parseFloat(document.getElementById("sellerPrice").value),
+          notes: document.getElementById("sellerNotes").value
+        });
+        alert("Seller info submitted!");
+        e.target.reset();
+      } catch (error) {
+        alert("Error submitting seller info: " + error);
       }
     });
   </script>
