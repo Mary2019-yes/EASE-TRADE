@@ -97,6 +97,72 @@
     this.reset();
   });
 </script>
+<!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
+
+<script>
+  // Your Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAieRdXGsYRowlrCP-f20iylTb_KHK77yQ",
+    authDomain: "simplifyd-biz.firebaseapp.com",
+    projectId: "simplifyd-biz",
+    storageBucket: "simplifyd-biz.appspot.com",
+    messagingSenderId: "681167510393",
+    appId: "1:681167510393:web:6a97787187ee27e879eda8",
+    measurementId: "G-V2046MG1R6"
+  };
+
+  // Initialize Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const db = firebase.firestore();
+</script>
+<script>
+  // Buyer Form Submission
+  document.getElementById("buyerForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    
+    const buyerData = {
+      name: document.getElementById("buyerName").value,
+      email: document.getElementById("buyerEmail").value,
+      item: document.getElementById("buyerItem").value,
+      notes: document.getElementById("buyerNotes").value,
+      timestamp: new Date()
+    };
+
+    db.collection("buyerForms").add(buyerData)
+      .then(() => {
+        alert("Buyer form submitted successfully!");
+        document.getElementById("buyerForm").reset();
+      })
+      .catch(error => {
+        alert("Error submitting buyer form: " + error.message);
+      });
+  });
+
+  // Seller Form Submission
+  document.getElementById("sellerForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const sellerData = {
+      name: document.getElementById("sellerName").value,
+      email: document.getElementById("sellerEmail").value,
+      item: document.getElementById("sellerItem").value,
+      price: document.getElementById("sellerPrice").value,
+      notes: document.getElementById("sellerNotes").value,
+      timestamp: new Date()
+    };
+
+    db.collection("sellerForms").add(sellerData)
+      .then(() => {
+        alert("Seller form submitted successfully!");
+        document.getElementById("sellerForm").reset();
+      })
+      .catch(error => {
+        alert("Error submitting seller form: " + error.message);
+      });
+  });
+</script>
 
 </body>
 </html>
