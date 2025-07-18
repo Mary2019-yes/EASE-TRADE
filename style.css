@@ -532,106 +532,78 @@ footer {
     font-size: 2rem;
   }
 }
-/* Base Reset */
-* {
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f7fb;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
-body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #f9f9fb;
-  color: #333;
-  padding: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-}
-
-form {
-  background: #fff;
-  padding: 2rem 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
-  width: 100%;
+.container {
   max-width: 500px;
+  margin: 60px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
 h2 {
-  margin-bottom: 1.5rem;
-  color: #222;
-  font-size: 1.75rem;
   text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 20px;
 }
 
 label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 6px;
   font-weight: 600;
-  font-size: 0.95rem;
+  color: #444;
 }
 
 input,
-select,
 textarea {
   width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  margin-bottom: 1.2rem;
-  font-size: 1rem;
-  transition: border-color 0.3s;
+  padding: 10px 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: vertical;
 }
 
 input:focus,
-select:focus,
 textarea:focus {
-  border-color: #4a90e2;
+  border-color: #007bff;
   outline: none;
 }
 
-button {
-  background: #4a90e2;
-  color: white;
-  padding: 0.9rem 1.5rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+.btn {
   width: 100%;
-  transition: background 0.3s;
+  padding: 12px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-button:hover {
-  background: #367bd3;
+.btn:hover {
+  background-color: #0056b3;
 }
 
-.summary {
-  background-color: #f1f5fb;
-  border-left: 4px solid #4a90e2;
-  padding: 1rem;
-  border-radius: 8px;
-  margin-top: 1rem;
-  font-size: 0.95rem;
+.status-message {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
 }
-
-.small {
-  font-size: 0.85rem;
-  color: #777;
-  margin-top: -0.8rem;
-  margin-bottom: 1rem;
-}
-
-.checkbox-group {
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;
-  font-size: 0.9rem;
-}
-
-.checkbox-group input {
-  margin-right: 0.5rem;
-}
-
