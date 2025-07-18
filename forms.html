@@ -1,62 +1,65 @@
-<!-- start-transaction.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Start Transaction - Simplifyd Biz</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <script type="module" src="firebase.js"></script>
 </head>
 <body>
-  <section class="form-section">
-    <h2>Start New Transaction</h2>
+  <div class="container">
+    <h2>Start Transaction</h2>
     <form id="transactionForm">
-      <label for="clientName">Client Name</label>
-      <input type="text" id="clientName" name="clientName" required>
-
-      <label for="clientEmail">Client Email</label>
-      <input type="email" id="clientEmail" name="clientEmail" required>
-
-      <label for="transactionAmount">Amount (KES)</label>
-      <input type="number" id="transactionAmount" name="transactionAmount" required>
-
-      <label for="transactionDetails">Transaction Details</label>
-      <textarea id="transactionDetails" name="transactionDetails" required></textarea>
-
-      <button type="submit">Submit</button>
+      <div class="form-group">
+        <label for="transactionId">Transaction ID</label>
+        <input type="text" id="transactionId" required />
+      </div>
+      <div class="form-group">
+        <label for="buyerEmail">Buyer Email</label>
+        <input type="email" id="buyerEmail" required />
+      </div>
+      <div class="form-group">
+        <label for="sellerEmail">Seller Email</label>
+        <input type="email" id="sellerEmail" required />
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount (KES)</label>
+        <input type="number" id="amount" required />
+      </div>
+      <div class="form-group">
+        <label for="itemDesc">Item Description</label>
+        <textarea id="itemDesc" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn">Submit Transaction</button>
     </form>
-    <p id="successMessage" style="display: none; color: green;">Transaction submitted successfully!</p>
-  </section>
+    <p id="statusMsg" class="status-message"></p>
+  </div>
 
-  <script type="module" src="firebase.js"></script>
   <script>
-    import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-    import { db } from './firebase.js';
+    const transactionForm = document.getElementById('transactionForm');
+    const statusMsg = document.getElementById('statusMsg');
 
-    const form = document.getElementById('transactionForm');
-    const successMsg = document.getElementById('successMessage');
-
-    form.addEventListener('submit', async (e) => {
+    transactionForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const clientName = form.clientName.value;
-      const clientEmail = form.clientEmail.value;
-      const transactionAmount = parseFloat(form.transactionAmount.value);
-      const transactionDetails = form.transactionDetails.value;
+
+      const transactionId = document.getElementById('transactionId').value;
+      const buyerEmail = document.getElementById('buyerEmail').value;
+      const sellerEmail = document.getElementById('sellerEmail').value;
+      const amount = parseFloat(document.getElementById('amount').value);
+      const itemDesc = document.getElementById('itemDesc').value;
 
       try {
-        await addDoc(collection(db, "transactions"), {
-          clientName,
-          clientEmail,
-          transactionAmount,
-          transactionDetails,
-          timestamp: new Date()
-        });
-        successMsg.style.display = 'block';
-        form.reset();
-      } catch (err) {
-        alert("Error submitting transaction: " + err);
+        await addTransaction(transactionId, buyerEmail, sellerEmail, amount, itemDesc);
+        statusMsg.textContent = 'Transaction submitted successfully!';
+        statusMsg.style.color = 'green';
+        transactionForm.reset();
+      } catch (error) {
+        statusMsg.textContent = 'Error: ' + error.message;
+        statusMsg.style.color = 'red';
       }
     });
   </script>
 </body>
 </html>
+
