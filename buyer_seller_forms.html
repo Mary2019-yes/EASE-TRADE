@@ -63,6 +63,40 @@
     </div>
 
   </div>
+<script>
+  function addTransaction(role, data) {
+    // For demonstration, we'll just log the submission
+    console.log(`${role} submitted:`, data);
+    alert(`${role} info submitted successfully!`);
+  }
+
+  // Buyer form submission
+  document.getElementById("buyerForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const data = {
+      name: document.getElementById("buyerName").value,
+      email: document.getElementById("buyerEmail").value,
+      item: document.getElementById("buyerItem").value,
+      notes: document.getElementById("buyerNotes").value,
+    };
+    addTransaction("Buyer", data);
+    this.reset();
+  });
+
+  // Seller form submission
+  document.getElementById("sellerForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const data = {
+      name: document.getElementById("sellerName").value,
+      email: document.getElementById("sellerEmail").value,
+      item: document.getElementById("sellerItem").value,
+      price: document.getElementById("sellerPrice").value,
+      notes: document.getElementById("sellerNotes").value,
+    };
+    addTransaction("Seller", data);
+    this.reset();
+  });
+</script>
 
 </body>
 </html>
