@@ -1,168 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Buyer & Seller Forms</title>
-  <link rel="stylesheet" href="buyer_seller_forms.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buyer/Seller Form - Simplifyd Biz</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f6f9fc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      font-size: 18px;
+      color: #e60000;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    p {
+      text-align: center;
+      font-size: 14px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+    label {
+      font-size: 14px;
+      margin-bottom: 6px;
+      display: block;
+    }
+    select, input[type="number"], input[type="email"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .hidden {
+      display: none;
+    }
+    .footer-links {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+    .footer-links a {
+      color: #007bff;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+  </style>
 </head>
 <body>
-
-  <div class="form-wrapper">
-
-    <!-- Buyer Form -->
-    <div class="form-section">
-      <h2>Buyer Form</h2>
-      <form id="buyerForm">
-        <div class="input-group">
-          <label for="buyerName">Full Name</label>
-          <input type="text" id="buyerName" name="buyerName" required>
-        </div>
-        <div class="input-group">
-          <label for="buyerEmail">Email</label>
-          <input type="email" id="buyerEmail" name="buyerEmail" required>
-        </div>
-        <div class="input-group">
-          <label for="buyerItem">Item Interested In</label>
-          <input type="text" id="buyerItem" name="buyerItem" required>
-        </div>
-        <div class="input-group">
-          <label for="buyerNotes">Additional Notes</label>
-          <textarea id="buyerNotes" name="buyerNotes" rows="4"></textarea>
-        </div>
-        <button type="submit" class="submit-btn">Submit Buyer Info</button>
-      </form>
-    </div>
-
-    <!-- Seller Form -->
-    <div class="form-section">
-      <h2>Seller Form</h2>
-      <form id="sellerForm">
-        <div class="input-group">
-          <label for="sellerName">Full Name</label>
-          <input type="text" id="sellerName" name="sellerName" required>
-        </div>
-        <div class="input-group">
-          <label for="sellerEmail">Email</label>
-          <input type="email" id="sellerEmail" name="sellerEmail" required>
-        </div>
-        <div class="input-group">
-          <label for="sellerItem">Item for Sale</label>
-          <input type="text" id="sellerItem" name="sellerItem" required>
-        </div>
-        <div class="input-group">
-          <label for="sellerPrice">Proposed Price</label>
-          <input type="number" id="sellerPrice" name="sellerPrice" required>
-        </div>
-        <div class="input-group">
-          <label for="sellerNotes">Additional Notes</label>
-          <textarea id="sellerNotes" name="sellerNotes" rows="4"></textarea>
-        </div>
-        <button type="submit" class="submit-btn">Submit Seller Info</button>
-      </form>
-    </div>
-
-  </div>
-<script>
-  function addTransaction(role, data) {
-    // For demonstration, we'll just log the submission
-    console.log(`${role} submitted:`, data);
-    alert(`${role} info submitted successfully!`);
-  }
-
-  // Buyer form submission
-  document.getElementById("buyerForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-    const data = {
-      name: document.getElementById("buyerName").value,
-      email: document.getElementById("buyerEmail").value,
-      item: document.getElementById("buyerItem").value,
-      notes: document.getElementById("buyerNotes").value,
-    };
-    addTransaction("Buyer", data);
-    this.reset();
-  });
-
-  // Seller form submission
-  document.getElementById("sellerForm").addEventListener("submit", function (e) {
-    e.preventDefault();
-    const data = {
-      name: document.getElementById("sellerName").value,
-      email: document.getElementById("sellerEmail").value,
-      item: document.getElementById("sellerItem").value,
-      price: document.getElementById("sellerPrice").value,
-      notes: document.getElementById("sellerNotes").value,
-    };
-    addTransaction("Seller", data);
-    this.reset();
-  });
-</script>
-<!-- Firebase App (the core Firebase SDK) -->
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
-
-<script>
-  // Your Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyAieRdXGsYRowlrCP-f20iylTb_KHK77yQ",
-    authDomain: "simplifyd-biz.firebaseapp.com",
-    projectId: "simplifyd-biz",
-    storageBucket: "simplifyd-biz.appspot.com",
-    messagingSenderId: "681167510393",
-    appId: "1:681167510393:web:6a97787187ee27e879eda8",
-    measurementId: "G-V2046MG1R6"
-  };
-
-  // Initialize Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-  const db = firebase.firestore();
-</script>
-<script>
-  // Buyer Form Submission
-  document.getElementById("buyerForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+  <div class="container" id="formSection">
+    <h1>NEVER BUY OR SELL ONLINE WITHOUT USING SIMPLIFYD BIZ</h1>
+    <p>with SIMPLIFYD BIZ you can buy and sell anything safely without losing your money or goods.</p>
     
-    const buyerData = {
-      name: document.getElementById("buyerName").value,
-      email: document.getElementById("buyerEmail").value,
-      item: document.getElementById("buyerItem").value,
-      notes: document.getElementById("buyerNotes").value,
-      timestamp: new Date()
-    };
+    <label for="userType">I am:</label>
+    <select id="userType">
+      <option value="" disabled selected>Select</option>
+      <option value="buyer">Buying</option>
+      <option value="seller">Selling</option>
+    </select>
 
-    db.collection("buyerForms").add(buyerData)
-      .then(() => {
-        alert("Buyer form submitted successfully!");
-        document.getElementById("buyerForm").reset();
-      })
-      .catch(error => {
-        alert("Error submitting buyer form: " + error.message);
-      });
-  });
+    <label for="itemType">What do you want to sell/buy:</label>
+    <select id="itemType">
+      <option value="" disabled selected>Select an item</option>
+      <option value="electronics">Electronics</option>
+      <option value="clothing">Clothing</option>
+      <option value="furniture">Furniture</option>
+      <option value="services">Services</option>
+      <option value="other">Other</option>
+    </select>
 
-  // Seller Form Submission
-  document.getElementById("sellerForm").addEventListener("submit", function(e) {
-    e.preventDefault();
+    <label for="price">Price (in KSh):</label>
+    <input type="number" id="price" placeholder="Enter price in KSh" />
 
-    const sellerData = {
-      name: document.getElementById("sellerName").value,
-      email: document.getElementById("sellerEmail").value,
-      item: document.getElementById("sellerItem").value,
-      price: document.getElementById("sellerPrice").value,
-      notes: document.getElementById("sellerNotes").value,
-      timestamp: new Date()
-    };
+    <button onclick="showLogin()">Get Started Now</button>
+  </div>
 
-    db.collection("sellerForms").add(sellerData)
-      .then(() => {
-        alert("Seller form submitted successfully!");
-        document.getElementById("sellerForm").reset();
-      })
-      .catch(error => {
-        alert("Error submitting seller form: " + error.message);
-      });
-  });
-</script>
+  <div class="container hidden" id="loginSection">
+    <h1>Login to Simplifyd Biz</h1>
+    
+    <label for="email">Please enter your email address:</label>
+    <input type="email" id="email" placeholder="your@example.com" />
 
+    <label for="password">Please enter your password:</label>
+    <input type="password" id="password" placeholder="Enter your password" />
+
+    <button>Secure Login</button>
+
+    <div class="footer-links">
+      <a href="#">Recover your password</a> | 
+      <a href="#">Register an account</a>
+    </div>
+  </div>
+
+  <script>
+    function showLogin() {
+      document.getElementById('formSection').classList.add('hidden');
+      document.getElementById('loginSection').classList.remove('hidden');
+    }
+  </script>
 </body>
 </html>
