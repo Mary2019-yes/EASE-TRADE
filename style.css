@@ -669,3 +669,15 @@ textarea:focus {
   max-width: 500px;
   margin: 50px auto;
 }
+.btn {
+  display: inline-block;
+  background-color: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+}
+.btn:hover {
+  background-color: #0056b3;
+}
