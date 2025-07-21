@@ -659,3 +659,11 @@ textarea:focus {
   color: #555;
   text-align: center;
 }
+#formSection {
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 50px auto;
+}
