@@ -623,7 +623,9 @@ textarea:focus {
   font-size: 28px;
   color: #333;
 }
-
+.hidden {
+  display: none;
+}
 .transaction-form-container label {
   display: block;
   margin-top: 15px;
