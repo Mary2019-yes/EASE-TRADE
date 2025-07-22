@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Forgot Password - Simplifyd Biz</title>
+</head>
+<body>
+  <h2>Recover your password</h2>
+  <input type="email" id="forgotEmail" placeholder="Enter your email" />
+  <button onclick="resetPassword()">Send Password Reset Email</button>
+  
+  <p id="message"></p>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAieRdXGsYRowlrCP-f20iylTb_KHK77yQ",
+      authDomain: "simplifyd-biz.firebaseapp.com",
+      projectId: "simplifyd-biz",
+      storageBucket: "simplifyd-biz.appspot.com",
+      messagingSenderId: "681167510393",
+      appId: "1:681167510393:web:6a97787187ee27e879eda8"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    function resetPassword() {
+      const email = document.getElementById("forgotEmail").value;
+      sendPasswordResetEmail(auth, email)
+        .then(() => {
+          document.getElementById("message").innerText = "Email sent! Check your inbox.";
+        })
+        .catch((error) => {
+          document.getElementById("message").innerText = "Error: " + error.message;
+        });
+    }
+
+    window.resetPassword = resetPassword;
+  </script>
+</body>
+</html>
