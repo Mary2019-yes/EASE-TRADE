@@ -53,21 +53,23 @@
       <a href="#">Register an account</a>
     </div>
   </div>
-   const firebaseConfig = {
-  apiKey: "AIzaSyAieRdXGsYRowlrCP-f20iylTb_KHK77yQ",
-  authDomain: "simplifyd-biz.firebaseapp.com",
-  projectId: "simplifyd-biz",
-  storageBucket: "simplifyd-biz.appspot.com",
-  messagingSenderId: "681167510393",
-  appId: "1:681167510393:web:6a97787187ee27e879eda8",
-  measurementId: "G-V2046MG1R6"
-};
- 
-  <script>
-    function showLogin() {
-      document.getElementById('formSection').classList.add('hidden');
-      document.getElementById('loginSection').classList.remove('hidden');
-    }
-  </script>
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js"></script>
 
-</body>
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyAieRdXGsYRowlrCP-f20iylTb_KHK77yQ",
+    authDomain: "simplifyd-biz.firebaseapp.com",
+    projectId: "simplifyd-biz",
+    storageBucket: "simplifyd-biz.appspot.com",
+    messagingSenderId: "681167510393",
+    appId: "1:681167510393:web:6a97787187ee27e879eda8",
+    measurementId: "G-V2046MG1R6"
+  };
+
+  // Initialize Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const analytics = firebase.analytics();
+</script>
+
