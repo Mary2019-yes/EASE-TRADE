@@ -2,48 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login - Simplifyd Biz</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="form-container">
+    <h2>Login to Your Account</h2>
 
-  <header>
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="signup.html">Sign Up</a></li>
-        <li><a href="login.html">Login</a></li>
-      </ul>
-    </nav>
-  </header>
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
 
-  <section class="section-padding">
-    <h1>Login to Simplifyd Biz</h1>
-    <form id="login-form" class="signup-form">
-      <label for="email">Please enter your email address:</label>
-      <input type="email" name="email" placeholder="your@example.com" required />
+    <button id="loginButton">Secure Login</button>
 
-      <label for="password">Please enter your password:</label>
-      <input type="password" name="password" placeholder="Enter your password" required />
+    <p class="extra-links">
+      <a href="recover.html">Recover your password</a> |
+      <a href="signup.html">Register an account</a>
+    </p>
 
-      <button type="submit">Secure Login</button>
+    <p id="loginStatus" style="color: red; font-weight: bold;"></p>
+  </div>
 
-      <div class="footer-links" style="margin-top: 10px;">
-        <a href="#">Recover your password</a> |
-        <a href="signup.html">Register an account</a>
-      </div>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Simplifyd Biz. All rights reserved.</p>
-  </footer>
-
-  <!-- Firebase Login Script -->
+  <!-- Firebase Core -->
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    // Your Firebase config
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyAieRdXGsYRowlrCP-f20iylTb_KHK77yQ",
@@ -58,25 +42,24 @@
     const app = initializeApp(firebaseConfig);
     const auth = getAuth(app);
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const form = document.querySelector("#login-form");
+    const loginButton = document.getElementById("loginButton");
+    const statusText = document.getElementById("loginStatus");
 
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const email = form.email.value;
-        const password = form.password.value;
+    loginButton.addEventListener("click", () => {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
-        signInWithEmailAndPassword(auth, email, password)
-          .then((userCredential) => {
-            alert("Login successful!");
-            window.location.href = "dashboard.html"; // You can change this path
-          })
-          .catch((error) => {
-            alert("Login failed: " + error.message);
-          });
-      });
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          statusText.style.color = "green";
+          statusText.textContent = "Login successful!";
+          window.location.href = "dashboard.html"; // change to your dashboard page
+        })
+        .catch((error) => {
+          statusText.style.color = "red";
+          statusText.textContent = "Error: " + error.message;
+        });
     });
   </script>
-
 </body>
 </html>
