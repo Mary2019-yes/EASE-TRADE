@@ -7,19 +7,20 @@
   <link rel="stylesheet" href="style.css" />
 </head>
   <body>
-  <div class="container" id="formSection">
+<form action="login.html">
+  <div class="container">
     <h1>NEVER BUY OR SELL ONLINE WITHOUT USING SIMPLIFYD BIZ</h1>
-    <p>with SIMPLIFYD BIZ you can buy and sell anything safely without losing your money or goods.</p>
-    
+    <p>With SIMPLIFYD BIZ you can buy and sell anything safely without losing your money or goods.</p>
+
     <label for="userType">I am:</label>
-    <select id="userType">
+    <select id="userType" required>
       <option value="" disabled selected>Select</option>
       <option value="buyer">Buying</option>
       <option value="seller">Selling</option>
     </select>
 
     <label for="itemType">What do you want to sell/buy:</label>
-    <select id="itemType">
+    <select id="itemType" required>
       <option value="" disabled selected>Select an item</option>
       <option value="electronics">Electronics</option>
       <option value="clothing">Clothing</option>
@@ -29,13 +30,11 @@
     </select>
 
     <label for="price">Price (in KSh):</label>
-    <input type="number" id="price" placeholder="Enter price in KSh" />
+    <input type="number" id="price" placeholder="Enter price in KSh" required />
 
-   <a href="login.html">
-  <button>Get Started Now</button>
-</a>
-
+    <button type="submit">Get Started Now</button>
   </div>
+</form>
 
   <div class="container hidden" id="loginSection">
     <h1>Login to Simplifyd Biz</h1>
