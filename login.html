@@ -19,15 +19,20 @@
   </header>
 
   <section class="section-padding">
-    <h1>Login to Your Account</h1>
+    <h1>Login to Simplifyd Biz</h1>
     <form id="login-form" class="signup-form">
-      <label for="email">Email Address *</label>
-      <input type="email" name="email" required />
+      <label for="email">Please enter your email address:</label>
+      <input type="email" name="email" placeholder="your@example.com" required />
 
-      <label for="password">Password *</label>
-      <input type="password" name="password" required />
+      <label for="password">Please enter your password:</label>
+      <input type="password" name="password" placeholder="Enter your password" required />
 
-      <button type="submit">Login</button>
+      <button type="submit">Secure Login</button>
+
+      <div class="footer-links" style="margin-top: 10px;">
+        <a href="#">Recover your password</a> |
+        <a href="signup.html">Register an account</a>
+      </div>
     </form>
   </section>
 
@@ -64,7 +69,7 @@
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
             alert("Login successful!");
-            window.location.href = "dashboard.html"; // Change this if you want
+            window.location.href = "dashboard.html"; // You can change this path
           })
           .catch((error) => {
             alert("Login failed: " + error.message);
