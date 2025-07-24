@@ -42,32 +42,55 @@
 
 <div class="container hidden" id="loginSection">
   <h1>Login to Simplifyd Biz</h1>
-  
-<label for="email">Please enter your email address:</label>
-<input type="email" id="email" placeholder="your@example.com" required />
 
-<label for="password">Please enter your password:</label>
-<input type="password" id="password" placeholder="Enter your password" required />
+  <form id="login-form">
+    <label for="email">Please enter your email address:</label>
+    <input type="email" name="email" id="email" placeholder="your@example.com" required />
 
-<!-- Login button -->
-<button type="submit">Secure Login</button>
+    <label for="password">Please enter your password:</label>
+    <input type="password" name="password" id="password" placeholder="Enter your password" required />
 
+    <!-- Login button -->
+    <button type="submit">Secure Login</button>
+  </form>
 
-<!-- Forgot Password -->
-<p style="margin-top: 10px;">
-  <a href="forgot.html">Forgot Password?</a>
-</p>
+  <!-- Forgot Password -->
+  <p style="margin-top: 10px;">
+    <a href="forgot.html">Forgot Password?</a>
+  </p>
 
-<!-- OR line -->
-<p style="margin: 10px 0; text-align: center;">- OR -</p>
+  <!-- OR line -->
+  <p style="margin: 10px 0; text-align: center;">- OR -</p>
 
-<!-- Register link -->
-<p style="text-align: center;">
-  <a href="signup.html">Register an Account</a>
-</p>
+  <!-- Register link -->
+  <p style="text-align: center;">
+    <a href="signup.html">Register an Account</a>
+  </p>
+</div>
 
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js"></script>
 
 <script>
+  // Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyAieRdXGsYRowlrCP-f20iylTb_KHK77yQ",
+    authDomain: "simplifyd-biz.firebaseapp.com",
+    projectId: "simplifyd-biz",
+    storageBucket: "simplifyd-biz.appspot.com",
+    messagingSenderId: "681167510393",
+    appId: "1:681167510393:web:6a97787187ee27e879eda8",
+    measurementId: "G-V2046MG1R6"
+  };
+
+  // Initialize Firebase
+  const app = firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const analytics = firebase.analytics();
+
+  // Switch to login form
   function handleGetStarted() {
     const userType = document.getElementById('userType').value;
     const itemType = document.getElementById('itemType').value;
@@ -81,26 +104,42 @@
     document.getElementById('formSection').classList.add('hidden');
     document.getElementById('loginSection').classList.remove('hidden');
   }
-</script>
 
-<!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-analytics.js"></script>
+  // Handle login
+  document.addEventListener("DOMContentLoaded", () => {
+    const loginForm = document.getElementById("login-form");
 
-<script>
-  const firebaseConfig = {
-    apiKey: "AIzaSyAieRdXGsYRowlrCP-f20iylTb_KHK77yQ",
-    authDomain: "simplifyd-biz.firebaseapp.com",
-    projectId: "simplifyd-biz",
-    storageBucket: "simplifyd-biz.appspot.com",
-    messagingSenderId: "681167510393",
-    appId: "1:681167510393:web:6a97787187ee27e879eda8",
-    measurementId: "G-V2046MG1R6"
-  };
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-  // Initialize Firebase
-  const app = firebase.initializeApp(firebaseConfig);
-  const analytics = firebase.analytics();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      auth.signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+
+          if (!user.emailVerified) {
+            alert("Please verify your email before logging in.");
+            auth.signOut();
+            return;
+          }
+
+          alert("Login successful!");
+          window.location.href = "dashboard.html"; // Change as needed
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          if (errorCode === "auth/user-not-found") {
+            alert("No user found with this email.");
+          } else if (errorCode === "auth/wrong-password") {
+            alert("Incorrect password.");
+          } else {
+            alert("Login failed: " + error.message);
+          }
+        });
+    });
+  });
 </script>
 
 </body>
