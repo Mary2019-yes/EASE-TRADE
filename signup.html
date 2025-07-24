@@ -80,9 +80,14 @@
                 alert("Failed to send verification email: " + error.message);
               });
           })
-          .catch((error) => {
-            alert("Signup failed: " + error.message);
-          });
+.catch((error) => {
+  if (error.code === "auth/email-already-in-use") {
+    alert("The email address is already registered with Escrow.com.");
+  } else {
+    alert("Signup failed: " + error.message);
+  }
+});
+
       });
     });
   </script>
