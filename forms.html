@@ -122,28 +122,29 @@
     loginForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+      const email = loginForm["email"].value;
+    const password = loginForm["password"].value;
 
-signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    alert("Login successful!");
-    window.location.href = "dashboard.html"; // You can pass email here if needed
-  })
-  .catch((error) => {
-    const errorCode = error.code;
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        alert("Login successful!");
+        window.location.href = "dashboard.html";
+      })
+      .catch((error) => {
+        const errorCode = error.code;
 
-    if (errorCode === "auth/user-not-found") {
-      alert("No user found with this email.");
-    } else if (errorCode === "auth/wrong-password") {
-      alert("Incorrect password.");
-    } else if (errorCode === "auth/invalid-email") {
-      alert("Invalid email format.");
-    } else {
-      alert("Login failed: " + error.message);
-    }
+        if (errorCode === "auth/user-not-found") {
+          alert("No user found with this email.");
+        } else if (errorCode === "auth/wrong-password") {
+          alert("Incorrect password.");
+        } else if (errorCode === "auth/invalid-email") {
+          alert("Invalid email format.");
+        } else {
+          alert("Login failed: " + error.message);
+        }
+      });
+
   });
-
 </script>
 
 
