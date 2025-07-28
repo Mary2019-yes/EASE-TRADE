@@ -108,6 +108,15 @@
 
   // Handle login
   document.addEventListener("DOMContentLoaded", () => {
+    // Autofill email and password from URL (optional)
+    const params = new URLSearchParams(window.location.search);
+    const emailFromURL = params.get("email");
+    const passwordFromURL = params.get("password");
+
+    if (emailFromURL) document.getElementById("email").value = emailFromURL;
+    if (passwordFromURL) document.getElementById("password").value = passwordFromURL;
+
+    // Login form submit handling
     const loginForm = document.getElementById("login-form");
 
     loginForm.addEventListener("submit", (e) => {
@@ -127,7 +136,7 @@
           }
 
           alert("Login successful!");
-          window.location.href = "dashboard.html"; // Change as needed
+          window.location.href = "dashboard.html"; // Update this if needed
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -142,6 +151,7 @@
     });
   });
 </script>
+
 
 </body>
 </html>
