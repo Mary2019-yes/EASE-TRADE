@@ -125,30 +125,25 @@
       const email = document.getElementById("email").value;
       const password = document.getElementById("password").value;
 
-      auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
+signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    alert("Login successful!");
+    window.location.href = "dashboard.html"; // You can pass email here if needed
+  })
+  .catch((error) => {
+    const errorCode = error.code;
 
-          if (!user.emailVerified) {
-            alert("Please verify your email before logging in.");
-            auth.signOut();
-            return;
-          }
+    if (errorCode === "auth/user-not-found") {
+      alert("No user found with this email.");
+    } else if (errorCode === "auth/wrong-password") {
+      alert("Incorrect password.");
+    } else if (errorCode === "auth/invalid-email") {
+      alert("Invalid email format.");
+    } else {
+      alert("Login failed: " + error.message);
+    }
+  });
 
-          alert("Login successful!");
-          window.location.href = "dashboard.html"; // Update this if needed
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          if (errorCode === "auth/user-not-found") {
-            alert("No user found with this email.");
-          } else if (errorCode === "auth/wrong-password") {
-            alert("Incorrect password.");
-          } else {
-            alert("Login failed: " + error.message);
-          }
-        });
-    });
   });
 </script>
 
