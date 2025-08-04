@@ -2,69 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dashboard - Simplifyd Biz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start Transaction</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <h2>Start a Transaction</h2>
+  <form id="transactionForm">
+    <label for="role">My Role</label>
+    <select id="role" name="role" required>
+      <option value="" disabled selected>e.g., Buyer or Seller</option>
+      <option value="buyer">Buyer</option>
+      <option value="seller">Seller</option>
+    </select>
 
-  <header>
-    <nav>
-      <ul class="menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="escrow.html">New Escrow</a></li>
-        <li><a href="#" id="logout-btn">Logout</a></li>
-      </ul>
-    </nav>
-  </header>
+    <label for="currency">Currency</label>
+    <select id="currency" name="currency" required>
+      <option value="usd">USD</option>
+      <option value="kes">KES</option>
+    </select>
 
-  <section class="section-padding">
-    <h1>Welcome to Your Dashboard</h1>
-    <p id="user-email">Loading user info...</p>
-    <p>Use the menu above to start a new escrow transaction or log out.</p>
-  </section>
+    <label for="inspection">Inspection Period (days)</label>
+    <input type="number" id="inspection" name="inspection" value="1" min="1" required />
 
-  <footer>
-    <p>&copy; 2025 Simplifyd Biz. All rights reserved.</p>
-  </footer>
+    <label for="category">Item Category</label>
+    <select id="category" name="category" required>
+      <option value="jewellery">Jewellery & Watches</option>
+      <option value="electronics">Electronics</option>
+      <option value="clothing">Clothing</option>
+    </select>
 
-  <!-- Firebase: Protect Page and Logout -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+    <label for="item">Item Name</label>
+    <input type="text" id="item" name="item" placeholder="e.g., Gold Bracelet" required />
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyAieRdXGsYRowlrCP-f20iylTb_KHK77yQ",
-      authDomain: "simplifyd-biz.firebaseapp.com",
-      projectId: "simplifyd-biz",
-      storageBucket: "simplifyd-biz.appspot.com",
-      messagingSenderId: "681167510393",
-      appId: "1:681167510393:web:6a97787187ee27e879eda8",
-      measurementId: "G-V2046MG1R6"
-    };
+    <label for="price">Price (USD)</label>
+    <input type="number" id="price" name="price" placeholder="8000" required />
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+    <label for="description">Item Description</label>
+    <textarea id="description" name="description" placeholder="Describe the item..." required></textarea>
 
-    const userEmailDisplay = document.getElementById("user-email");
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        userEmailDisplay.textContent = `Logged in as: ${user.email}`;
-      } else {
-        // Not logged in → redirect to login
-        window.location.href = "login.html";
-      }
-    });
-
-    // Handle logout
-    document.getElementById("logout-btn").addEventListener("click", (e) => {
-      e.preventDefault();
-      signOut(auth).then(() => {
-        alert("You have been logged out.");
-        window.location.href = "login.html";
-      });
-    });
-  </script>
+    <button type="submit">Continue</button>
+  </form>
 </body>
 </html>
