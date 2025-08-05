@@ -39,5 +39,15 @@
         console.error("Submission error:", error);
       }
     });
-  });
+
+        document.getElementById("price").addEventListener("input", function () {
+  const price = parseFloat(this.value);
+  if (!isNaN(price)) {
+    const fee = price * 0.02;
+    document.getElementById("escrow-fee").innerText = `KES ${fee.toFixed(2)}`;
+  } else {
+    document.getElementById("escrow-fee").innerText = "KES 0.00";
+  }
+});
+
 </script>
